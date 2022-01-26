@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import CadastroAluno from "../pages/CadastroAluno";
 import ListarAlunos from '../pages/ListarAlunos';
 import ExluirAluno from '../pages/ExcluirAlunos';
+import EditarAluno from '../pages/EditarAluno';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -13,6 +14,7 @@ const Routes: React.FC = () => (
     <Route path="/cadastroAluno" component={ CadastroAluno }/>
     <Route path="/listarAluno" component={ ListarAlunos }/>
     <Route path="/excluirAluno" component={ ExluirAluno }/>
+    <Route path="/editarAluno" component={ EditarAluno }/>
   </Switch>
 );
 
