@@ -15,14 +15,35 @@ export const Container = styled.div`
     align-items: center;
     margin-top: 10%;
 
+	input{
+		width: 300px;
+		height: 50px;
+		background-color: transparent;
+		border: 1px solid white;
+		border-radius: 15px;
+		padding: 16px;
+
+		&::placeholder{
+			background-color: transparent;
+			color: #fff;
+		}
+	}
+
 	h1{
 	}
 
 	Form{
-		height: 10vh;
+		height: 50vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		align-content: center;
+		margin: 10%;
+
+		input{
+			margin-bottom: 25px;
+		}
 	}	
+
+
 `;

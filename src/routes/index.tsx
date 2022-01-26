@@ -6,7 +6,7 @@ import Home from "../pages/Home";
 import CadastroAluno from "../pages/CadastroAluno";
 import ListarAlunos from '../pages/ListarAlunos';
 import ExluirAluno from '../pages/ExcluirAlunos';
-import EditarAluno from '../pages/EditarAluno';
+import EditarAluno from '../pages/EditarAlunos';
 
 const Routes: React.FC = () => (
   <Switch>

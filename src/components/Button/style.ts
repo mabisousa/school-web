@@ -7,7 +7,7 @@ export const Container = styled.button`
 	border: 0;
 	padding: 0 10px;
 	color: #fff;
-	width: 30vw;
+	width: 250px;
 	transition: background-color 0.2s;
 
 	&:hover{

@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useState, useRef } from "react";
-import { Container } from './style'
+import { Container, Icon } from './style'
 import api from "../../service/api"
 import Button from "../../components/Button";
 import { Form } from "@unform/web";
 import { FormHandles } from "@unform/core";
+import { FiChevronLeft } from 'react-icons/fi';
 
 interface Aluno{
     id: number,
@@ -31,6 +32,7 @@ const ExluirAluno: React.FC = () => {
     
 	return (
 		<>
+            <Icon href="/"><FiChevronLeft color="#f4f5f7" size="35px"/></Icon>
 			<Container>
                 <h1>Exluir Aluno</h1> 
                 

@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useState, useRef } from "react";
-import { Container } from './style'
+import { Container, Icon } from './style'
 import api from "../../service/api"
 import Button from "../../components/Button";
 import { Form } from "@unform/web";
 import { FormHandles } from "@unform/core";
 import Input from "../../components/Input";
+import { FiChevronLeft } from 'react-icons/fi';
 
 interface Aluno{
     id: number,
@@ -39,13 +40,14 @@ const EditarAluno: React.FC = () => {
     
 	return (
 		<>
+            <Icon href="/"><FiChevronLeft color="#f4f5f7" size="35px"/></Icon>
 			<Container>
                 <h1>Editar Aluno</h1> 
                 <input pattern="[0-9]*" placeholder="Informe o id do aluno" onChange={event => setId(event.target.value)}/>
                
                 <Form ref={formRef} onSubmit={() => editar}>
                     <input placeholder="Informe o novo nome do aluno" onChange={event => setData(event.target.value)}/>
-                    <Button type="submit"></Button>
+                    <Button type="submit">Editar</Button>
 				</Form> 			
 			</Container>
 		</>

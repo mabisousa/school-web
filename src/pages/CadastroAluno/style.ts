@@ -1,15 +1,21 @@
 import styled from "styled-components";
 
+export const Icon = styled.a`
+  position: realtive;
+  float: left;
+  margin-top: -100px;
+  margin-left: 80px;
+`;
+
 export const Container = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-items: center;
-	align-items: center;
-	color: #fff;
-	height: 80vh;
+	height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;  
+    align-items: center;
+    margin-top: 10%;
 
 	h1{
-		margin-top: 150px;
 	}
 
 	Form{
@@ -18,5 +24,10 @@ export const Container = styled.div`
 		flex-direction: column;
 		align-items: center;
 		align-content: center;
+		margin: 10%;
+
+		input{
+			margin-bottom: 25px;
+		}
 	}	
 `;
