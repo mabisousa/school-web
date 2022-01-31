@@ -25,7 +25,7 @@ const CadastroAluno: React.FC = () => {
 	
 	return (
 		<>
-			<Icon href="/"><FiChevronLeft color="#f4f5f7" size="35px"/></Icon>
+			<Icon href="/homeAlunos"><FiChevronLeft color="#f4f5f7" size="35px"/></Icon>
 			<Container>
 				<h1>Cadastrar Aluno</h1> 
 				<Form ref={formRef} onSubmit={cadastrar}>

@@ -8,17 +8,17 @@ export const Icon = styled.a`
 `;
 
 export const Container = styled.div`
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    justify-items: center;  
-    align-items: center;
-    margin-top: 10%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;  
+  align-items: center;
+  margin-top: 10%;
 
-    div{
-        p{
-            color: #dee3e0;
-            margin-top: 15px;
-        }
+  div{
+    p{
+      color: #dee3e0;
+      margin-top: 15px;
     }
+  }
 `

@@ -9,11 +9,11 @@ export const Icon = styled.a`
 
 export const Container = styled.div`
 	height: 70vh;
-    display: flex;
-    flex-direction: column;
-    justify-items: center;  
-    align-items: center;
-    margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;  
+  align-items: center;
+  margin-top: 10%;
 
 	input{
 		width: 300px;
@@ -29,9 +29,6 @@ export const Container = styled.div`
 		}
 	}
 
-	h1{
-	}
-
 	Form{
 		height: 50vh;
 		display: flex;
@@ -44,6 +41,4 @@ export const Container = styled.div`
 			margin-bottom: 25px;
 		}
 	}	
-
-
 `;

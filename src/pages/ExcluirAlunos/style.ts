@@ -9,14 +9,11 @@ export const Icon = styled.a`
 
 export const Container = styled.div`
 	height: 70vh;
-    display: flex;
-    flex-direction: column;
-    justify-items: center;  
-    align-items: center;
-    margin-top: 10%;
-
-	h1{
-	}
+  display: flex;
+  flex-direction: column;
+  justify-items: center;  
+  align-items: center;
+  margin-top: 10%;
 
 	Form{
 		height: 10vh;

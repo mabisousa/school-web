@@ -7,7 +7,7 @@ const App: React.FC = () => {
   return (
     <>
       <Router>
-          <Routes/>
+        <Routes/>
         
         <Global/>
       </Router>
