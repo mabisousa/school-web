@@ -13,5 +13,9 @@ export const Container = styled.div`
 			background-color: transparent;
 			color: #fff;
 		}
+
+		&:not(:placeholder-shown) {
+			color: #fff;
+		}
 	}
 `;

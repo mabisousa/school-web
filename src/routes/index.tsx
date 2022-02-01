@@ -11,6 +11,7 @@ import HomeAlunos from '../pages/HomeAlunos';
 import HomePresenca from '../pages/HomePresenca';
 import ListarPresenca from '../pages/ListarPresenca';
 import ExluirPresenca from '../pages/ExcluirPresenca';
+import CadastroPresenca from '../pages/CadastrarPresenca';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -23,6 +24,7 @@ const Routes: React.FC = () => (
     <Route path="/editarAluno" component={ EditarAluno }/>
     <Route path="/listarPresenca" component={ ListarPresenca }/>
     <Route path="/excluirPresenca" component={ ExluirPresenca }/>
+    <Route path="/cadastroPresenca" component={ CadastroPresenca }/>
   </Switch>
 );
 

@@ -9,22 +9,58 @@ export const Icon = styled.a`
 
 export const Container = styled.div`
 	height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-items: center;  
-  align-items: center;
-  margin-top: 10%;
+	display: flex;
+	flex-direction: column;
+	justify-items: center;  
+	align-items: center;
+	margin-top: 10%;
+
+	Form:nth-child(even){
+		background: #009394;
+	}
+
+	Form:nth-child(odd){
+		background: #84a295;
+	}
 
 	Form{
-		height: 50vh;
+		background: #009394;
+		width: 90%;
+		height: 40vh;
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		align-items: center;
 		align-content: center;
-		margin: 10%;
+		justify-content: space-between;
+		border-radius: 15px;
+		padding: 15px;
+		margin: 5px;
 
 		input{
-			margin-bottom: 25px;
+			border: none;
+		}
+
+		#hold{
+			width: 20vw;
+			display: flex;
+			justify-content: space-between;
+			
+			input{
+				margin-top: 5px;
+			}
 		}
 	}	
+`;
+
+export const Buttons = styled.div`
+	width: 100%;
+	margin-right: 140px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+
+	button:nth-child(1){
+		background: #7e7e7e;
+		margin-right: 15px;
+	}
 `;
