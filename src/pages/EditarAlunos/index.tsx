@@ -1,62 +1,58 @@
-import React, { useCallback, useEffect, useState, useRef } from "react";
-import { Container, Icon } from './style'
-import api from "../../service/api"
-import Button from "../../components/Button";
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { Container, Header } from "./style";
+import api from "../../service/api";
+import { FiChevronLeft } from 'react-icons/fi';
+import { IoMdAddCircleOutline } from 'react-icons/io';
 import { Form } from "@unform/web";
 import { FormHandles } from "@unform/core";
 import Input from "../../components/Input";
-import { FiChevronLeft } from 'react-icons/fi';
 
 interface Aluno{
   id: number,
   nome: string;
 }
 
-const EditarAluno: React.FC = () => {
-
-  const [ id, setId ] = useState('');
-  const [ data, setData ] = useState('');
-
-  const formRef = useRef<FormHandles>(null)
+const ListarAlunos: React.FC = () => {
+  const [ alunos, setAluno ] = useState<Aluno[]>([]);
+  const [ nomeAluno, setNomeAluno ] = useState('');
 
   const aluno = {
 		nome: "",
 	}
 
-	/*const cadastrar = useCallback(async (data: Aluno) =>{
-		aluno.nome = data.nome;
-		await api.post("/aluno", aluno)
-		window.location.reload();
-	}, [])*/
+  useEffect(() => {
+    api.get("/aluno").then((response) => {
+      setAluno(response.data);
+    })
+  }, [])
 
-  const editar = useCallback(async(id, data: Aluno) => { 
-    aluno.nome = data.nome;
+  const formRef = useRef<FormHandles>(null);
+
+  const editar = useCallback(async(id, nomeAluno) => { 
     console.log("id >>>", id);
-
+    aluno.nome = nomeAluno;
+    console.log(aluno.nome);
     await api.put(`/aluno/${id}`, aluno);
     window.location.reload();
   }, [])
-    
-    
-	return (
-		<>
-      <Icon href="/homeAlunos"><FiChevronLeft color="#f4f5f7" size="35px"/></Icon>
-			<Container>
-        <h1>Editar Aluno</h1> 
-        <input pattern="[0-9]*" placeholder="Informe o id do aluno" onChange={event => setId(event.target.value)}/>
-        
-        <Form ref={formRef} onSubmit={() => editar}>
-          <input placeholder="Informe o novo nome do aluno" onChange={event => setData(event.target.value)}/>
-          <Button type="submit">Editar</Button>
-				</Form> 			
-			</Container>
-		</>
-	)
+
+  return (
+    <>
+      <Header>
+        <a href="/homeAlunos"><FiChevronLeft size="35px"/></a>
+        <h1>Editar aluno</h1>
+        <a href="/cadastroAluno"><IoMdAddCircleOutline size="35px"/></a>
+      </Header>    
+      <Container>
+        <input placeholder="Nome" onChange={nomeAluno => {setNomeAluno(nomeAluno.target.value)}}/>
+        {alunos.map((aluno) => (
+          <Form key={aluno.id} ref={formRef} onSubmit={() => editar(aluno.id, nomeAluno)}>
+            <button type="submit"><p>{aluno.nome}</p></button>
+          </Form> 		
+        ))}
+      </Container>
+      </>
+    )
 }
 
-export default EditarAluno;
-
-/*
-    <input pattern="[0-9]*" placeholder="Informe o nome" onChange={event => setId(event.target.value)}/>					
-
-*/
+export default ListarAlunos;
