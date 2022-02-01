@@ -5,7 +5,6 @@ import Route from "./Route"
 import Home from "../pages/Home";
 import CadastroAluno from "../pages/CadastroAluno";
 import ListarAlunos from '../pages/ListarAlunos';
-import ExluirAluno from '../pages/ExcluirAlunos';
 import EditarAluno from '../pages/EditarAlunos';
 import HomeAlunos from '../pages/HomeAlunos';
 import HomePresenca from '../pages/HomePresenca';
@@ -20,7 +19,6 @@ const Routes: React.FC = () => (
     <Route path="/homePresenca" component={ HomePresenca }/>
     <Route path="/cadastroAluno" component={ CadastroAluno }/>
     <Route path="/listarAluno" component={ ListarAlunos }/>
-    <Route path="/excluirAluno" component={ ExluirAluno }/>
     <Route path="/editarAluno" component={ EditarAluno }/>
     <Route path="/listarPresenca" component={ ListarPresenca }/>
     <Route path="/excluirPresenca" component={ ExluirPresenca }/>

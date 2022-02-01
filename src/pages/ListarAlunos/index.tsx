@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { Container, Icon } from "./style";
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { Container, Header } from "./style";
 import api from "../../service/api";
 import { FiChevronLeft } from 'react-icons/fi';
+import { IoMdAddCircleOutline } from 'react-icons/io';
+import { RiDeleteBinLine } from 'react-icons/ri';
+import { Form } from "@unform/web";
+import { FormHandles } from "@unform/core";
 
 interface Aluno{
+  id: number,
   nome: string;
 }
 
@@ -16,17 +21,35 @@ const ListarAlunos: React.FC = () => {
     })
   }, [])
 
+  const formRef = useRef<FormHandles>(null)
+
+  const excluir = useCallback(async(id) => { 
+    console.log("id >>>", id);
+    await api.delete(`/aluno/${id}`);
+    window.location.reload();
+  }, [])
+
+  const editar = useCallback(async(id) => { 
+    console.log("id >>>", id);
+    await api.put(`/aluno/${id}`);
+    window.location.reload();
+  }, [])
+
   return (
     <>
-      <Icon href="/homeAlunos"><FiChevronLeft color="#f4f5f7" size="35px"/></Icon>
-        <Container>
-          <h1>Lista de alunos cadastrados</h1>
-          {alunos.map((aluno) => (
-            <div>
-              <p>{aluno.nome}</p>
-            </div>
-          ))}
-        </Container>
+      <Header>
+        <a href="/homeAlunos"><FiChevronLeft size="35px"/></a>
+        <h1>Lista de alunos cadastrados</h1>
+        <a href="/cadastroAluno"><IoMdAddCircleOutline size="35px"/></a>
+      </Header>    
+      <Container>
+        {alunos.map((aluno) => (
+          <Form key={aluno.id} ref={formRef} onSubmit={() => excluir(aluno.id)}>
+            <p>{aluno.nome}</p>
+            <button type="submit"><RiDeleteBinLine/></button>
+          </Form> 		
+        ))}
+      </Container>
       </>
     )
 }

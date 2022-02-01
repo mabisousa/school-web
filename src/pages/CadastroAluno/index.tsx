@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from "react";
-import { Container, Icon } from './style'
+import { Container, Header } from './style'
 import api from "../../service/api"
 import { Form } from "@unform/web";
 import Input from "../../components/Input";
@@ -25,9 +25,11 @@ const CadastroAluno: React.FC = () => {
 	
 	return (
 		<>
-			<Icon href="/homeAlunos"><FiChevronLeft color="#f4f5f7" size="35px"/></Icon>
-			<Container>
+			<Header>
+				<a href="/listarAluno"><FiChevronLeft size="35px"/></a>
 				<h1>Cadastrar Aluno</h1> 
+			</Header>
+			<Container>
 				<Form ref={formRef} onSubmit={cadastrar}>
 					<Input name="nome" placeholder="Informe o nome"/>					
 					<Button type="submit">Cadastrar</Button>

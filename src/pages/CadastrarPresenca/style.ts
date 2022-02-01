@@ -24,7 +24,6 @@ export const Container = styled.div`
 	}
 
 	Form{
-		background: #009394;
 		width: 90%;
 		height: 40vh;
 		display: flex;

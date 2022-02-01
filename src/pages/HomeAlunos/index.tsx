@@ -9,10 +9,8 @@ const Home: React.FC = () =>{
     <>
       <Icon href="/"><FiChevronLeft color="#f4f5f7" size="35px"/></Icon>
       <Container>
-        <Link to="/cadastroAluno"><Button type="submit">Cadastrar Aluno</Button></Link>
         <Link to="/listarAluno"><Button type="submit">Listar Aluno</Button></Link>
         <Link to="/editarAluno"><Button type="submit">Editar Aluno</Button></Link>
-        <Link to="/excluirAluno"><Button type="submit">Excluir Aluno</Button></Link>
       </Container>
     </>
 	)
