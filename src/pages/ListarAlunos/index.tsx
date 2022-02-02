@@ -6,6 +6,8 @@ import { IoMdAddCircleOutline } from 'react-icons/io';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { Form } from "@unform/web";
 import { FormHandles } from "@unform/core";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 interface Aluno{
   id: number,
@@ -24,9 +26,22 @@ const ListarAlunos: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
 
   const excluir = useCallback(async(id) => { 
-    console.log("id >>>", id);
+    try{
+      console.log("id >>>", id);
     await api.delete(`/aluno/${id}`);
     window.location.reload();
+    }catch(e) {
+      toast.error("Erro ao excluir aluno porque ele está presente" , {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+    
   }, [])
 
   return (
@@ -35,7 +50,8 @@ const ListarAlunos: React.FC = () => {
         <a href="/homeAlunos"><FiChevronLeft size="35px"/></a>
         <h1>Lista de alunos cadastrados</h1>
         <a href="/cadastroAluno"><IoMdAddCircleOutline size="35px"/></a>
-      </Header>    
+      </Header>  
+      <ToastContainer/>  
       <Container>
         {alunos.map((aluno) => (
           <Form key={aluno.id} ref={formRef} onSubmit={() => excluir(aluno.id)}>
