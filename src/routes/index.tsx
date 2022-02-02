@@ -3,14 +3,14 @@ import { Switch } from 'react-router-dom'
 import Route from "./Route"
 
 import Home from "../pages/Home";
+import HomeAlunos from '../pages/HomeAlunos';
+import HomePresenca from '../pages/HomePresenca';
 import CadastroAluno from "../pages/CadastroAluno";
 import ListarAlunos from '../pages/ListarAlunos';
 import EditarAluno from '../pages/EditarAlunos';
-import HomeAlunos from '../pages/HomeAlunos';
-import HomePresenca from '../pages/HomePresenca';
-import ListarPresenca from '../pages/ListarPresenca';
-import ExluirPresenca from '../pages/ExcluirPresenca';
 import CadastroPresenca from '../pages/CadastrarPresenca';
+import ListarPresenca from '../pages/ListarPresenca';
+import EditarPresenca from '../pages/EditarPresenca';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -21,8 +21,8 @@ const Routes: React.FC = () => (
     <Route path="/listarAluno" component={ ListarAlunos }/>
     <Route path="/editarAluno" component={ EditarAluno }/>
     <Route path="/listarPresenca" component={ ListarPresenca }/>
-    <Route path="/excluirPresenca" component={ ExluirPresenca }/>
     <Route path="/cadastroPresenca" component={ CadastroPresenca }/>
+    <Route path="/editarPresenca" component={ EditarPresenca }/>
   </Switch>
 );
 

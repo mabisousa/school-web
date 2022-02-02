@@ -29,12 +29,6 @@ const ListarAlunos: React.FC = () => {
     window.location.reload();
   }, [])
 
-  const editar = useCallback(async(id) => { 
-    console.log("id >>>", id);
-    await api.put(`/aluno/${id}`);
-    window.location.reload();
-  }, [])
-
   return (
     <>
       <Header>

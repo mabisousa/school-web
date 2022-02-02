@@ -5,14 +5,13 @@ import { FiChevronLeft } from 'react-icons/fi';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { Form } from "@unform/web";
 import { FormHandles } from "@unform/core";
-import Input from "../../components/Input";
 
 interface Aluno{
   id: number,
   nome: string;
 }
 
-const ListarAlunos: React.FC = () => {
+const EditarAlunos: React.FC = () => {
   const [ alunos, setAluno ] = useState<Aluno[]>([]);
   const [ nomeAluno, setNomeAluno ] = useState('');
 
@@ -55,4 +54,4 @@ const ListarAlunos: React.FC = () => {
     )
 }
 
-export default ListarAlunos;
+export default EditarAlunos;
