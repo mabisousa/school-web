@@ -1,83 +1,75 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Container, Icon, Buttons } from './style'
+import { Container, Header, Icon } from './style'
 import api from "../../service/api"
 import { Form } from "@unform/web";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
+import { AiFillGift } from 'react-icons/ai'
 import { FormHandles } from "@unform/core";
 import { FiChevronLeft } from 'react-icons/fi';
-
-interface PresencProps{
-	presenca: boolean,
-	data: string,
-	aluno: {
-		id: number,
-		nome: string
-	}
-}
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+  
 interface Aluno{
 	id: number,
-	nome: string;
-  }
+	nome: string
+}
 
 const CadastroAluno: React.FC = () => {
 	const formRef = useRef<FormHandles>(null)
-	const [presente, setPresente] = useState("");
+	const [ alunos, setAluno ] = useState<Aluno[]>([]);
+
 	const presenca = {
 		presenca: Boolean.valueOf(),
+		aluno_id: parseFloat(""),
 		data: "",
-		aluno: {
-			id: parseFloat(""),
-			nome: ""
-		}
 	}
-
-	const [ alunos, setAluno ] = useState<Aluno[]>([]);
 
 	useEffect(() => {
 		api.get("/aluno").then((response) => {
 			setAluno(response.data);  
 		})
 	}, [])
-	
-	const handleChange = useCallback((status: string) => {
-		setPresente(status);
-	}, []);
 
-	const cadastrar = useCallback(async (data: PresencProps) =>{
-		if(presente == "true"){
-			presenca.presenca = true;
-			console.log(presenca.presenca)
-		}
-		presenca.data = data.data;
-		presenca.aluno.id = data.aluno.id;
-		presenca.aluno.nome = data.aluno.nome;
-		await api.post("/presenca", presenca)
-		window.location.reload();
+	const today = new Date()
+    const dd = String(today.getDate()).padStart(2, '0')
+    const mm = String(today.getMonth() + 1).padStart(2, '0')
+    const yyyy = today.getFullYear()
+
+    const data = dd + '/' + mm + '/' + yyyy
+
+
+	const cadastrar = useCallback(async (aluno_id) => {
+		presenca.presenca = true;
+		presenca.aluno_id = aluno_id;
+		presenca.data = data;
+		await api.post("/presenca", presenca).then(() =>{
+			toast.success("Presença cadastrada", {
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			  });
+		})
 	}, [])
 	
 	return (
 		<>
-			<Icon href="/homePresenca"><FiChevronLeft color="#f4f5f7" size="35px"/></Icon>
-			<Container>
+			<Header>
+				<a href="/listarPresenca"><FiChevronLeft size="35px"/></a>
 				<h1>Cadastrar Presença</h1> 
+			</Header>
+			<ToastContainer/>
+			<Container>
 				{alunos.map((aluno) => (
-					<Form key={aluno.id} ref={formRef} onSubmit={() => cadastrar}>
+					<Form key={aluno.id} ref={formRef} onSubmit={() => cadastrar(aluno.id)}>
 						<p>{aluno.nome}</p>
-						<Input type={"date"} name="data"/>	
 						<div id="hold">
-							<input type="radio" id="1" name="fav_language" onChange={() => handleChange("true")}/>
-							<label htmlFor="1">Presente</label><br/>
-							<input type="radio" id="2" name="fav_language" onChange={() => handleChange("false")}/>
-							<label htmlFor="2">Ausente</label><br/>
+							<Icon type="submit"><AiFillGift/></Icon>
 						</div>
 					</Form> 		
 				))}
-				<Buttons>
-					<Button>Cancelar</Button>
-					<Button type="submit">Cadastrar</Button>
-				</Buttons>
 			</Container>
 		</>
 	)

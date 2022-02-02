@@ -1,11 +1,25 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Icon = styled.a`
-  position: realtive;
-  float: left;
-  margin-top: -100px;
+
+
+export const Header = styled.div`
+  width: 90%;
+  height: 5vh;
+  display: flex;
+  margin-top: 37px;
   margin-left: 80px;
+  flex-direction: row;
+  justify-items: center;  
+  justify-content: space-between;
+  h1{
+	  width: 62%;
+  }
+  svg{
+    color: #f4f5f7;
+  }
 `;
+
+
 
 export const Container = styled.div`
 	height: 70vh;
@@ -13,7 +27,7 @@ export const Container = styled.div`
 	flex-direction: column;
 	justify-items: center;  
 	align-items: center;
-	margin-top: 10%;
+	margin-top: 37px;
 
 	Form:nth-child(even){
 		background: #009394;
@@ -25,7 +39,6 @@ export const Container = styled.div`
 
 	Form{
 		width: 90%;
-		height: 40vh;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
@@ -35,31 +48,24 @@ export const Container = styled.div`
 		padding: 15px;
 		margin: 5px;
 
+		p{
+			width: 50%;
+		}
+
 		input{
 			border: none;
 		}
 
 		#hold{
-			width: 20vw;
+			margin-right: 15px;
 			display: flex;
 			justify-content: space-between;
-			
-			input{
-				margin-top: 5px;
-			}
 		}
 	}	
 `;
 
-export const Buttons = styled.div`
-	width: 100%;
-	margin-right: 140px;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
-
-	button:nth-child(1){
-		background: #7e7e7e;
-		margin-right: 15px;
-	}
+export const Icon = styled.button`
+	background: transparent;
+	border: none;
+	color: #fff;
 `;
